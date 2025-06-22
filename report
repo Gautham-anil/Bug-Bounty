@@ -1,0 +1,65 @@
+Bug Bounty Recon Attempt Log
+
+Target: T-Mobile (https://account.t-mobile.com)
+Date: June 21-22, 2025
+Researcher: MrWick0007 (Gautham)
+
+Objective:
+
+Attempt to identify potential security misconfigurations or secret exposures through JS files or directory listings under T-Mobile’s account portal.
+
+Methodology:
+
+JavaScript Recon:
+
+Targeted file: /signin/v2/main.1d53e4b89b13954.js
+
+Tools: curl, grep, SecretFinder
+
+Looked for keywords: BEGIN RSA PRIVATE KEY, key, token, auth, secret, etc.
+
+Header & Directory Enumeration:
+
+Tested for directory listings and sensitive file exposure (.git, backup.zip, .env, etc.)
+
+Used: curl -I, ffuf
+
+Response codes observed: Mostly 404 or static file responses (non-sensitive)
+
+Header Inspection:
+
+CSP, HSTS, XSS, and other headers present and properly configured.
+
+No missing security headers.
+
+Bugcrowd Submission:
+
+Submitted a preliminary report referencing potential JS exposure.
+
+Response from triage: "No security concern with the provided PoC. Please provide additional impact."
+
+Final Assessment:
+
+No sensitive data exposed in the targeted JS file.
+
+No open directory or misconfigured asset discovered.
+
+No viable Proof-of-Concept leading to exploitation.
+
+Decision:
+
+Bug dropped due to lack of impact and PoC.
+Moving forward to new recon targets with better scope alignment and less noise.
+
+Lessons Learned:
+
+JS secrets hunting is noisy; refine filters and automate with better token entropy analysis.
+
+Not all exposed files = bugs.
+
+Always validate with Bugcrowd’s VRT and response impact.
+
+Next Step: Identify a new target with richer scope (e.g., APIs, subdomains, third-party integrations).
+
+End of Report
+
