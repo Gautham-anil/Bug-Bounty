@@ -1,4 +1,4 @@
-# Bug-Bounty
+# report/tmobile-june2025.md
 A collection of bug bounty recon logs, dropped reports, PoCs, and learning notes.
 
 # Bug Bounty Recon & Reports
